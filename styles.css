@@ -1,0 +1,249 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ff5f8b, #00b4a8);
+}
+
+.container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.licenciado {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.tab-button.active {
+  background-color: #00b4a8;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.comentarios-box {
+  width: 100%;
+  max-width: 600px;
+  height: 38px;
+  resize: vertical;
+  min-height: 38px;
+  max-height: 200px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #00b4a8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+button:hover {
+  background-color: #ff5f8b;
+}
+
+.resultado {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.resultado h2 {
+  font-weight: normal;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.resultado p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.firma {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.paciente-item {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.paciente-item h3 {
+  margin-top: 0;
+}
+
+.paciente-item button {
+  width: auto;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.paciente-nombre {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.metodo-tabs {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.metodo-tabs .tab-button {
+  flex: 1;
+  padding: 0.5rem;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.metodo-tabs .tab-button.active {
+  background-color: #00b4a8;
+  color: white;
+}
+
+#tablaComparativa,
+#todosResultados {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+#tablaComparativa table,
+#todosResultados table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tablaComparativa th,
+#tablaComparativa td,
+#todosResultados th,
+#todosResultados td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#tablaComparativa th,
+#todosResultados th {
+  background-color: #f2f2f2;
+}
+
+.edit-icon {
+  cursor: pointer;
+  color: #00b4a8;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #graficasContent,
+  #graficasContent * {
+    visibility: visible;
+  }
+  #graficasContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

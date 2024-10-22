@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Nutricional</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculadora<br />Nutricional</h1>
+      <p class="licenciado">Lic. Alma Rosa Arratia Briones</p>
+      <nav class="tabs">
+        <button id="pacienteTab" class="tab-button active">
+          Datos del Paciente
+        </button>
+        <button id="calculadoraTab" class="tab-button">Calculadora</button>
+        <button id="consultaTab" class="tab-button">Consulta Paciente</button>
+        <button id="graficasTab" class="tab-button">Gráficas</button>
+      </nav>
+      <div id="pacienteContent" class="tab-content active">
+        <form id="pacienteForm">
+          <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <input type="text" id="Nombre" list="nombresPacientes" required />
+            <datalist id="nombresPacientes"></datalist>
+          </div>
+          <div class="form-group">
+            <label for="Apellido">Apellido</label>
+            <input type="text" id="Apellido" required />
+          </div>
+          <div class="form-group">
+            <label for="Telefono">Teléfono</label>
+            <input type="tel" id="Telefono" />
+          </div>
+          <div class="form-group">
+            <label for="Correo">Correo</label>
+            <input type="email" id="Correo" />
+          </div>
+          <div class="form-group">
+            <label for="Altura">Altura (cm)</label>
+            <input type="number" id="Altura" required />
+          </div>
+          <div class="form-group">
+            <label>Sexo</label>
+            <select id="Sexo" required>
+              <option value="">Seleccione</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ComentarioPaciente">Comentario:</label>
+            <textarea
+              id="ComentarioPaciente"
+              rows="4"
+              class="comentarios-box"
+            ></textarea>
+          </div>
+          <button type="submit" id="GuardarPaciente">Guardar Paciente</button>
+        </form>
+      </div>
+      <div id="calculadoraContent" class="tab-content">
+        <div class="form-group">
+          <label for="PacienteSelect">Seleccionar Paciente</label>
+          <select id="PacienteSelect"></select>
+        </div>
+        <h2 id="pacienteNombre" class="paciente-nombre"></h2>
+        <div class="metodo-tabs">
+          <button id="mifflinTab" class="tab-button active">
+            Mifflin-St Jeor
+          </button>
+          <button id="harrisTab" class="tab-button">Harris-Benedict</button>
+        </div>
+        <form id="calculatorForm">
+          <div class="form-group">
+            <label for="Peso">Peso (kg)</label>
+            <input type="number" id="Peso" step="0.01" required />
+          </div>
+          <div class="form-group">
+            <label for="AlturaCalc">Altura (cm)</label>
+            <input type="number" id="AlturaCalc" required />
+          </div>
+          <div class="form-group">
+            <label for="Edad">Edad</label>
+            <input type="number" id="Edad" required />
+          </div>
+          <div class="form-group">
+            <label>Sexo</label>
+            <div class="radio-group">
+              <input
+                type="radio"
+                id="Masculino"
+                name="SexoCalc"
+                value="Masculino"
+              />
+              <label for="Masculino">Masculino</label>
+              <input
+                type="radio"
+                id="Femenino"
+                name="SexoCalc"
+                value="Femenino"
+              />
+              <label for="Femenino">Femenino</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Actividad">Nivel de Actividad</label>
+            <select id="Actividad">
+              <option value="Sedentario">Sedentario</option>
+              <option value="Ligero">Ligero</option>
+              <option value="Moderado">Moderado</option>
+              <option value="Activo">Activo</option>
+              <option value="Muy activo">Muy activo</option>
+            </select>
+          </div>
+          <button type="submit" id="Calcular">Calcular</button>
+        </form>
+        <div id="Resultado" class="resultado"></div>
+        <button id="Limpiar">Limpiar Resultado</button>
+        <button id="Guardar" style="display: none">Guardar Resultado</button>
+      </div>
+      <div id="consultaContent" class="tab-content">
+        <h2>Consulta de Paciente</h2>
+        <div class="form-group">
+          <label for="ConsultaPacienteSelect">Seleccionar Paciente</label>
+          <select id="ConsultaPacienteSelect"></select>
+        </div>
+        <div id="infoPaciente"></div>
+        <div id="comentariosPaciente">
+          <h3>Comentarios del Paciente</h3>
+          <ul id="listaComentarios"></ul>
+        </div>
+        <div class="form-group">
+          <label for="NuevoComentarioConsulta">Nuevo Comentario:</label>
+          <textarea
+            id="NuevoComentarioConsulta"
+            rows="4"
+            class="comentarios-box"
+          ></textarea>
+        </div>
+        <button id="AgregarComentarioConsulta">Agregar Comentario</button>
+      </div>
+      <div id="graficasContent" class="tab-content">
+        <div class="form-group">
+          <label for="GraficaPacienteSelect">Seleccionar Paciente</label>
+          <select id="GraficaPacienteSelect"></select>
+        </div>
+        <div class="form-group">
+          <label for="DatoGrafica">Dato a mostrar en la gráfica</label>
+          <select id="DatoGrafica">
+            <option value="peso">Peso</option>
+            <option value="calorias">Calorías Diarias</option>
+          </select>
+        </div>
+        <canvas id="graficaPeso"></canvas>
+        <div id="tablaComparativa"></div>
+        <button id="imprimirDatos">Imprimir Datos</button>
+        <button id="toggleResultados">Ocultar Resultados Generales</button>
+        <div id="todosResultados"></div>
+      </div>
+      <div class="firma">AABA.2024</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
